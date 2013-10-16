@@ -5,11 +5,11 @@ require 'iijapi/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "iijapi"
-  spec.version       = Iijapi::VERSION
+  spec.version       = IIJAPI::VERSION
   spec.authors       = ["Takahiro HIMURA"]
   spec.email         = ["taka@himura.jp"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{IIJ API SDK}
+  spec.summary       = %q{IIJ API SDK}
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -20,4 +20,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "json"
   spec.add_dependency "faraday"
+  spec.add_dependency "faraday_middleware"
 end
