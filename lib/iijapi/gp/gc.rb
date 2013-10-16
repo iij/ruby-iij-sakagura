@@ -41,6 +41,20 @@ module IIJAPI
         info[attr]
       end
 
+      def get_contract_status
+        call('GetContractStatus')['Status']
+      end
+
+      def contract_status(opts = {})
+        @contract_status = nil if opts[:force]
+        @contract_status ||= get_contract_status
+        @contract_status
+      end
+
+      def contract_status!
+        contract_status(:force => true)
+      end
+
       def get_virtual_machine_status
         call('GetVirtualMachineStatus')['Status']
       end
