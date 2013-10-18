@@ -21,6 +21,10 @@ module IIJAPI
         { "GpServiceCode" => gp_service_code }
       end
 
+      def service_code_list
+        @client.post("GetServiceCodeList", default_args)
+      end
+
       def contract_information
         @client.post("GetContractInformation", default_args)
       end
