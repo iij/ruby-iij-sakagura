@@ -109,9 +109,11 @@ module IIJAPI
 
       def wait_while(checker, opts = {}, &block)
         opts[:wait_sec] ||= 10
-        while checker.call
-          block.call if block
-          sleep opts[:wait_sec]
+        catch(:abort) do
+          while checker.call
+            block.call if block
+            sleep opts[:wait_sec]
+          end
         end
       end
 
