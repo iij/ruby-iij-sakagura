@@ -1,4 +1,5 @@
 require 'forwardable'
+require 'iijapi/core/query_client'
 
 module IIJAPI
   module GP
@@ -12,7 +13,7 @@ module IIJAPI
 
       def initialize(opts = {})
         opts = DEFAULT_OPTIONS.merge(opts)
-        @client = ::IIJAPI::QueryClient.new(opts)
+        @client = ::IIJAPI::Core::QueryClient.new(opts)
       end
 
       def_delegators :@client, :get, :post
