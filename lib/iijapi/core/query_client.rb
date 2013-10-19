@@ -19,8 +19,8 @@ module IIJAPI
         @agent ||= Faraday.new(:url => @endpoint) do |builder|
           builder.request :signature_v2, :access_key => @access_key, :secret_key => @secret_key
           builder.request :url_encoded
-          builder.response :json, :content_type => /\bjson$/
           builder.response :iijapi_raise_error
+          builder.response :json, :content_type => /\bjson$/
           builder.adapter Faraday.default_adapter
         end
       end

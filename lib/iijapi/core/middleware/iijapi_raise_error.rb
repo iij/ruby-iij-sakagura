@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 require 'faraday'
+require 'iijapi/core/error'
 
 module IIJAPI
   module Core
