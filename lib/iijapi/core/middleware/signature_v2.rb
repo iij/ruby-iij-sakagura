@@ -12,7 +12,6 @@ module IIJAPI
           @access_key = options[:access_key]
           @secret_key = options[:secret_key]
           @expire_after = options[:expire_after] || 3600
-          p options
           super(app)
         end
 
@@ -35,7 +34,6 @@ module IIJAPI
         end
 
         def make_canonicalized_string(env)
-          p env
           url = env[:url]
           hh =
             if [80, 443].include? url.port
