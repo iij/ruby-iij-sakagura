@@ -28,6 +28,14 @@ module IIJAPI
       def contract_information
         @client.post("GetContractInformation", default_args)
       end
+
+      def add_clone_virtual_machines(params = {})
+        @client.post("AddCloneVirtualMachines", default_args.merge(params))
+      end
+
+      def add_virtual_machines(params = {})
+        @client.post("AddVirtualMachines", default_args.merge(params))
+      end
     end
   end
 end
