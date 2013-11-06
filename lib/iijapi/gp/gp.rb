@@ -36,6 +36,10 @@ module IIJAPI
       def add_virtual_machines(params = {})
         @client.post("AddVirtualMachines", default_args.merge(params))
       end
+
+      def add_fw_lb_option(params = {})
+        @client.post("AddFwLbOption", default_args.merge(params))
+      end
     end
   end
 end
