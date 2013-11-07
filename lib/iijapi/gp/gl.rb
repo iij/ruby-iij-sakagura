@@ -27,6 +27,14 @@ module IIJAPI
         call('GetContractStatus')['Status']
       end
 
+      def describe_lb
+        call('DescribeLb')
+      end
+
+      def describe_fw
+        call('DescribeFw')
+      end
+
       def set_label(label)
         @client.post("SetLabel",
                      "GpServiceCode" => gp_service_code,
