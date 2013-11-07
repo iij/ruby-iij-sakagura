@@ -17,6 +17,10 @@ module IIJAPI
         ::IIJAPI::GP::GC.new(@client, gp_service_code, gc_service_code)
       end
 
+      def gl(gl_service_code)
+        ::IIJAPI::GP::GL.new(@client, gp_service_code, gl_service_code)
+      end
+
       def default_args
         { "GpServiceCode" => gp_service_code }
       end
