@@ -43,6 +43,37 @@ module IIJAPI
       end
       alias :label= :set_label
 
+      def add_lb_virtual_server(virtual_server_name, port, protocol, pool, traffic_ip_name_list = nil)
+        opts = {
+          "VirtualServerName" => virtual_server_name,
+          "Port" => port,
+          "Protocol" => protocol,
+          "Pool" => pool
+        }
+        opts["TrafficIpName"] = traffic_ip_name_list if traffic_ip_name_list
+        call('AddLbVirtualServer', opts)
+      end
+
+      def delete_lb_virtual_server(virtual_server_name)
+        call('DeleteLbVirtualServer', "VirtualServerName" => virtual_server_name)
+      end
+
+      def add_lb_pool(pool, nodes)
+        opts = {
+          "Pool" => pool
+        }
+        nodes.each.with_index(1) do |node, i|
+          opts["NodeIpAddress.#{i}"] = node[0]
+          opts["NodePort.#{i}"] = node[1]
+        end
+
+        call("AddLbPool", opts)
+      end
+
+      def delete_lb_pool(pool)
+        call("DeleteLbPool", "Pool" => pool)
+      end
+
       def call(api_name, params = {})
         @client.post(api_name, default_args.merge(params))
       end
