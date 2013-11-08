@@ -1,5 +1,6 @@
 require 'faraday'
 require 'faraday_middleware'
+require 'iijapi/core/hash_to_query'
 require 'iijapi/core/middleware/signature_v2'
 require 'iijapi/core/middleware/iijapi_raise_error'
 
@@ -29,7 +30,7 @@ module IIJAPI
         {
           "Action" => action,
           "APIVersion" => @api_version
-        }.merge(params)
+        }.merge(IIJAPI::Core.hash_to_query(params))
       end
 
       def post(action, params = {})
