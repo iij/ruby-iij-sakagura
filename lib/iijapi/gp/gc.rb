@@ -99,6 +99,10 @@ module IIJAPI
       end
       alias :label= :set_label
 
+      def change_vm_type(vm_type)
+        call('ChangeVirtualMachineType', "VirtualMachineType" => vm_type)
+      end
+
       def wait_for_start(opts = {}, &block)
         wait_while(proc { status! == "Starting" }, opts, &block)
       end
