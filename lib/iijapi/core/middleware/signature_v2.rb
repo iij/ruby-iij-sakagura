@@ -60,7 +60,7 @@ module IIJAPI
         end
 
         def make_query_str(params)
-          params.sort_by{|k,v| k}.map{|k,v| escape(k) + "=" + escape(v) }.join('&')
+          params.sort_by{|k,v| k}.map{|k,v| escape(k.to_s) + "=" + escape(v.to_s) }.join('&')
         end
       end
       Faraday.register_middleware :request, :signature_v2 => SignatureV2
