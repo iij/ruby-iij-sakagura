@@ -35,6 +35,16 @@ module IIJAPI
         call('DescribeFw')
       end
 
+      def lb_info(force = false)
+        @lb_info = nil if force
+        @lb_info ||= describe_lb
+        @lb_info
+      end
+
+      def lb_info!
+        lb_info(force = true)
+      end
+
       def set_label(label)
         @client.post("SetLabel",
                      "GpServiceCode" => gp_service_code,
@@ -42,6 +52,17 @@ module IIJAPI
                      "Label" => label)
       end
       alias :label= :set_label
+
+      def add_or_update_virtual_server(virtual_server_name, port, protocol, pool, traffic_ip_name_list = nil)
+        lb_vserver = lb_info['VirtualServerList'].find{|lb_vserver| lb_vserver['Name'] == virtual_server_name }
+        if lb_vserver
+          # already exist
+          set_lb_virtual_server(virtual_server_name, port, protocol, pool, traffic_ip_name_list)
+        else
+          # create a new vserver
+          add_lb_virtual_server(virtual_server_name, port, protocol, pool, traffic_ip_name_list)
+        end
+      end
 
       def add_lb_virtual_server(virtual_server_name, port, protocol, pool, traffic_ip_name_list = nil)
         opts = {
@@ -67,6 +88,17 @@ module IIJAPI
 
       def delete_lb_virtual_server(virtual_server_name)
         call('DeleteLbVirtualServer', "VirtualServerName" => virtual_server_name)
+      end
+
+      def add_or_update_pool(pool, nodes)
+        lb_pool = lb_info['PoolList'].find{|lb_pool| lb_pool['Name'] == pool }
+        if lb_pool
+          # already exist
+          set_lb_pool(pool, nodes)
+        else
+          # create a new pool
+          add_lb_pool(pool, nodes)
+        end
       end
 
       def add_lb_pool(pool, nodes)
