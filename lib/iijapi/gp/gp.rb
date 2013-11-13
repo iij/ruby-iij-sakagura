@@ -44,6 +44,10 @@ module IIJAPI
       def add_fw_lb_option(params = {})
         @client.post("AddFwLbOption", default_args.merge(params))
       end
+
+      def get_virtual_machine_status_list(gc_list)
+        @client.post("GetVirtualMachineStatusList", default_args.merge({ "GcServiceCode" => gc_list }))
+      end
     end
   end
 end
