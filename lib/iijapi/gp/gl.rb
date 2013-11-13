@@ -149,6 +149,10 @@ module IIJAPI
         call("DeleteLbNode", opts)
       end
 
+      def change_fw_lb_option_type(type)
+        call("ChangeFwLbOptionType", "Type" => type)
+      end
+
       def call(api_name, params = {})
         @client.post(api_name, default_args.merge(params))
       end
