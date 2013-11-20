@@ -103,6 +103,14 @@ module IIJAPI
         call('ChangeVirtualMachineType', "VirtualMachineType" => vm_type)
       end
 
+      def attach_fwlb(gl_service_code)
+        call('AttachFwLb', "GlServiceCode" => gl_service_code)
+      end
+
+      def detach_fwlb(gl_service_code)
+        call('DetachFwLb', "GlServiceCode" => gl_service_code)
+      end
+
       def wait_for_start(opts = {}, &block)
         wait_while(proc { status! == "Starting" }, opts, &block)
       end
