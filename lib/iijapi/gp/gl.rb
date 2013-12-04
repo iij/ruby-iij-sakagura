@@ -7,7 +7,6 @@ module IIJAPI
         @client = client
         @gp_service_code = gp_service_code
         @gl_service_code = gl_service_code
-        @cache
       end
       attr_reader :gp_service_code
       attr_reader :gl_service_code
