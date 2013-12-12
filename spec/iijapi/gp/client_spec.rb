@@ -7,7 +7,7 @@ describe IIJAPI::GP::Client do
     end
   end
 
-  describe "#gp_service_code_list", :vcr => true do
+  describe "#gp_service_code_list", :vcr do
     it "returns service code list" do
       expect(signed_gp_client.gp_service_code_list).to be_an(Array)
     end

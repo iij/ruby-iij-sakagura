@@ -8,7 +8,7 @@ describe IIJAPI::GP::GP do
     client.gp(test_gp_service_code)
   end
 
-  describe "#service_code_list", :vcr => true do
+  describe "#service_code_list", :vcr do
     let(:response) do
       subject.service_code_list
     end
