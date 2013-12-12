@@ -57,6 +57,22 @@ describe IIJAPI::Core::QueryClient do
         end
         it_should_behave_like "valid signature"
       end
+
+      context "when long list params" do
+        let(:action) { "Test" }
+        let(:params) { (1..10).inject({}) {|h, i| h["Param.#{i}"] = i; h } }
+        let(:string_to_sign) do
+          param_str = "Param.1=1&Param.10=10&Param.2=2&Param.3=3&Param.4=4&Param.5=5&Param.6=6&Param.7=7&Param.8=8&Param.9=9"
+
+          [
+           "POST",
+           "rspec.api.iij.jp",
+           "/json",
+           "APIVersion=#{api_version}&AccessKeyId=#{access_key}&Action=#{action}&Expire=2013-10-01T01%3A00%3A00Z&#{param_str}&SignatureMethod=HmacSHA256&SignatureVersion=2"
+          ].join("\n")
+        end
+        it_should_behave_like "valid signature"
+      end
     end
   end
 end
