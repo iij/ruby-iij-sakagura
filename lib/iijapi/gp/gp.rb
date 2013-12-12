@@ -26,27 +26,31 @@ module IIJAPI
       end
 
       def service_code_list
-        @client.post("GetServiceCodeList", default_args)
+        call("GetServiceCodeList")
       end
 
       def contract_information
-        @client.post("GetContractInformation", default_args)
+        call("GetContractInformation")
       end
 
       def add_clone_virtual_machines(params = {})
-        @client.post("AddCloneVirtualMachines", default_args.merge(params))
+        call("AddCloneVirtualMachines", params)
       end
 
       def add_virtual_machines(params = {})
-        @client.post("AddVirtualMachines", default_args.merge(params))
+        call("AddVirtualMachines", params)
       end
 
       def add_fw_lb_option(params = {})
-        @client.post("AddFwLbOption", default_args.merge(params))
+        call("AddFwLbOption", params)
       end
 
       def get_virtual_machine_status_list(gc_list)
-        @client.post("GetVirtualMachineStatusList", default_args.merge({ "GcServiceCode" => gc_list }))
+        call("GetVirtualMachineStatusList", "GcServiceCode" => gc_list)
+      end
+
+      def call(api_name, params = {})
+        @client.post(api_name, default_args.merge(params))
       end
     end
   end
