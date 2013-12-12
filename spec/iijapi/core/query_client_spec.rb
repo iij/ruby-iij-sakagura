@@ -74,5 +74,23 @@ describe IIJAPI::Core::QueryClient do
         it_should_behave_like "valid signature"
       end
     end
+
+    describe "error handler" do
+      context "when 401" do
+        before do
+          stub_request(:post, "https://rspec.api.iij.jp/json").to_return( :status => 401, :body => '{}', :headers => { 'Content-Type' => 'application/json' } )
+        end
+
+        it { expect { client.post("Test", {}) }.to raise_error(IIJAPI::Core::Error::Unauthorized) }
+      end
+
+      context "when status is ok but response has ErrorResponse key" do
+        before do
+          stub_request(:post, "https://rspec.api.iij.jp/json").to_return( :status => 200, :body => '{ "ErrorResponse": {} }', :headers => { 'Content-Type' => 'application/json' } )
+        end
+
+        it { expect { client.post("Test", {}) }.to raise_error(IIJAPI::Core::Error::BackendError) }
+      end
+    end
   end
 end
