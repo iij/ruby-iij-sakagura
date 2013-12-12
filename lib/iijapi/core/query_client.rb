@@ -12,13 +12,14 @@ module IIJAPI
         @access_key = opts[:access_key]
         @secret_key = opts[:secret_key]
         @api_version = opts[:api_version]
+        @expire_after = opts[:expire_after]
       end
 
       attr_reader :endpoint
 
       def agent
         @agent ||= Faraday.new(:url => @endpoint) do |builder|
-          builder.request :signature_v2, :access_key => @access_key, :secret_key => @secret_key
+          builder.request :signature_v2, :access_key => @access_key, :secret_key => @secret_key, :expire_after => @expire_after
           builder.request :url_encoded
           builder.response :iijapi_raise_error
           builder.response :json, :content_type => /\bjson$/
