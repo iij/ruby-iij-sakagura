@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: <GP_ENDPOINT>/json
+    body:
+      encoding: UTF-8
+      string: AccessKeyId=<ACCESS_KEY>&SignatureVersion=2&SignatureMethod=HmacSHA256&Expire=2013-12-13T02%3A32%3A06Z&Action=GetServiceCodeList&APIVersion=20130901&GpServiceCode=<GP_SERVICE_CODE>&Signature=89iVraGB3k2QZNkLavamrgu41joj%2B9Qgt4cx1s430I4%3D
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept:
+      - ! '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 13 Dec 2013 01:32:06 GMT
+      Server:
+      - thin
+      Content-Type:
+      - application/json; charset=utf-8
+      Strict-Transport-Security:
+      - max-age=2592000
+      X-Content-Type-Options:
+      - nosniff
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: US-ASCII
+      string: ! '{"GetServiceCodeListResponse":{"RequestId":"cad12bee-0c47b962-bf6162fa-0000ed9d-90d7668c","CustomerCode":"SG9505063","GpServiceCode":"<GP_SERVICE_CODE>","GcServiceCodeList":["gc98661107"],"GnbServiceCodeList":[],"GxServiceCodeList":[],"GlServiceCodeList":[],"GvmServiceCodeList":[],"GvsServiceCodeList":[],"GomServiceCodeList":[]}}'
+    http_version: 
+  recorded_at: Fri, 13 Dec 2013 01:32:07 GMT
+recorded_with: VCR 2.8.0
