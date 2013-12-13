@@ -1,15 +1,15 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'iijapi/version'
+require 'iij/sakagura/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "iijapi"
-  spec.version       = IIJAPI::VERSION
+  spec.name          = "iij-sakagura"
+  spec.version       = IIJ::Sakagura::VERSION
   spec.authors       = ["Takahiro HIMURA"]
   spec.email         = ["taka@himura.jp"]
-  spec.description   = %q{IIJ API SDK}
-  spec.summary       = %q{IIJ API SDK}
+  spec.description   = %q{IIJ API platform (Sakagura) SDK}
+  spec.summary       = %q{IIJ API platform (Sakagura) SDK}
   spec.homepage      = ""
   spec.license       = "MIT"
 

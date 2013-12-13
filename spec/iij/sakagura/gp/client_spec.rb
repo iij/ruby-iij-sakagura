@@ -1,8 +1,8 @@
 require 'helper'
 
-describe IIJAPI::GP::Client do
+describe IIJ::Sakagura::GP::Client do
   describe "#gp" do
-    it "returns IIJAPI::GP::GP with specified gp service code" do
+    it "returns IIJ::Sakagura::GP::GP with specified gp service code" do
       expect(signed_gp_client.gp('gp00000000').gp_service_code).to eq('gp00000000')
     end
   end

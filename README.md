@@ -4,7 +4,7 @@
 
 Add this line to your application's Gemfile:
 
-    gem 'iijapi'
+    gem 'iij/sakagura'
 
 And then execute:
 
@@ -12,7 +12,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install iijapi
+    $ gem install iij-sakagura
 
 ## Usage
 

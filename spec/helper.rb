@@ -7,7 +7,7 @@ SimpleCov.start do
   add_filter 'spec'
 end
 
-require 'iijapi'
+require 'iij/sakagura'
 require 'rspec'
 require 'webmock/rspec'
 
@@ -39,23 +39,23 @@ VCR.configure do |c|
 end
 
 def test_access_key
-  ENV.fetch('IIJAPI_TEST_ACCESS_KEY')
+  ENV.fetch('IIJ_SAKAGURA_TEST_ACCESS_KEY')
 end
 
 def test_secret_key
-  ENV.fetch('IIJAPI_TEST_SECRET_KEY')
+  ENV.fetch('IIJ_SAKAGURA_TEST_SECRET_KEY')
 end
 
 def test_gp_service_code
-  ENV.fetch('IIJAPI_TEST_GP_SERVICE_CODE')
+  ENV.fetch('IIJ_SAKAGURA_TEST_GP_SERVICE_CODE')
 end
 
 def test_gp_endpoint
-  ENV.fetch('IIJAPI_TEST_GP_ENDPOINT')
+  ENV.fetch('IIJ_SAKAGURA_TEST_GP_ENDPOINT')
 end
 
 def signed_gp_client
-  IIJAPI::GP::Client.new(:endpoint => test_gp_endpoint,
-                         :access_key => test_access_key,
-                         :secret_key => test_secret_key)
+  IIJ::Sakagura::GP::Client.new(:endpoint => test_gp_endpoint,
+                                :access_key => test_access_key,
+                                :secret_key => test_secret_key)
 end

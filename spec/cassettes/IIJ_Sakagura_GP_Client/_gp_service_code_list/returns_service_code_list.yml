@@ -5,7 +5,7 @@ http_interactions:
     uri: <GP_ENDPOINT>/json
     body:
       encoding: UTF-8
-      string: AccessKeyId=<ACCESS_KEY>&SignatureVersion=2&SignatureMethod=HmacSHA256&Expire=2013-12-11T09%3A12%3A16Z&Action=GetGpServiceCodeList&APIVersion=20130901&Signature=SnwCdsRnC0s6YwkElsq37BJF6gUFf7JbfRS9cuFOXto%3D
+      string: AccessKeyId=<ACCESS_KEY>&SignatureVersion=2&SignatureMethod=HmacSHA256&Expire=2013-12-13T03%3A25%3A12Z&Action=GetGpServiceCodeList&APIVersion=20130901&Signature=cJocNhpOTq%2FpWYzcw%2B%2BZlEGnd90sW6kfZiCaTR0ReXc%3D
     headers:
       User-Agent:
       - Faraday v0.8.8
@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 11 Dec 2013 08:12:16 GMT
+      - Fri, 13 Dec 2013 02:25:12 GMT
       Server:
       - thin
       Content-Type:
@@ -34,7 +34,7 @@ http_interactions:
       - chunked
     body:
       encoding: US-ASCII
-      string: ! '{"GetGpServiceCodeListResponse":{"RequestId":"3cac29ee-0c47b962-bf6162fa-0000959d-98d7668c","GpServiceCodeList":["<GP_SERVICE_CODE>"]}}'
+      string: ! '{"GetGpServiceCodeListResponse":{"RequestId":"54c22bee-0c47b962-be6162fa-0000e89d-d3d7668c","GpServiceCodeList":["<GP_SERVICE_CODE>"]}}'
     http_version: 
-  recorded_at: Wed, 11 Dec 2013 08:12:16 GMT
+  recorded_at: Fri, 13 Dec 2013 02:25:13 GMT
 recorded_with: VCR 2.8.0

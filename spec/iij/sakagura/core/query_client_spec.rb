@@ -23,7 +23,7 @@ shared_examples_for "valid signature" do
   end
 end
 
-describe IIJAPI::Core::QueryClient do
+describe IIJ::Sakagura::Core::QueryClient do
   let(:endpoint) { "https://rspec.api.iij.jp/" }
   let(:access_key) { "0123456789abcdefghij" }
   let(:secret_key) { "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMN" }
@@ -35,11 +35,11 @@ describe IIJAPI::Core::QueryClient do
   end
 
   let(:client) do
-    IIJAPI::Core::QueryClient.new(:endpoint => endpoint,
-                                  :access_key => access_key,
-                                  :secret_key => secret_key,
-                                  :api_version => api_version,
-                                  :expire_after => expire_after)
+    IIJ::Sakagura::Core::QueryClient.new(:endpoint => endpoint,
+                                         :access_key => access_key,
+                                         :secret_key => secret_key,
+                                         :api_version => api_version,
+                                         :expire_after => expire_after)
   end
 
   describe '#post' do
@@ -81,7 +81,7 @@ describe IIJAPI::Core::QueryClient do
           stub_request(:post, "https://rspec.api.iij.jp/json").to_return( :status => 401, :body => '{}', :headers => { 'Content-Type' => 'application/json' } )
         end
 
-        it { expect { client.post("Test", {}) }.to raise_error(IIJAPI::Core::Error::Unauthorized) }
+        it { expect { client.post("Test", {}) }.to raise_error(IIJ::Sakagura::Core::Error::Unauthorized) }
       end
 
       context "when status is ok but response has ErrorResponse key" do
@@ -89,7 +89,7 @@ describe IIJAPI::Core::QueryClient do
           stub_request(:post, "https://rspec.api.iij.jp/json").to_return( :status => 200, :body => '{ "ErrorResponse": {} }', :headers => { 'Content-Type' => 'application/json' } )
         end
 
-        it { expect { client.post("Test", {}) }.to raise_error(IIJAPI::Core::Error::BackendError) }
+        it { expect { client.post("Test", {}) }.to raise_error(IIJ::Sakagura::Core::Error::BackendError) }
       end
     end
   end
