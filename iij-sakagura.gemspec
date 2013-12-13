@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["taka@himura.jp"]
   spec.description   = %q{IIJ API platform (Sakagura) SDK}
   spec.summary       = %q{IIJ API platform (Sakagura) SDK}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/iij/ruby-iij-sakagura"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
