@@ -23,8 +23,12 @@ module IIJ
             @app.call(env)
           end
 
+          def current_time
+            Time.now
+          end
+
           def required_params
-            expire = Time.now + @expire_after
+            expire = current_time + @expire_after
 
             {
               "AccessKeyId" => @access_key,
