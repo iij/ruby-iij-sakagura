@@ -13,7 +13,24 @@ require 'webmock/rspec'
 
 WebMock.disable_net_connect!
 
+module RequestMiddlewareExampleGroup
+  def self.included(base)
+    base.let(:endpoint) { "http://api.example.jp/1/" }
+    base.let(:connection) { Faraday.new :url => endpoint }
+    base.let(:middleware) { described_class.new(lambda{|env| env }, *middleware_options) }
+  end
+
+  def process(method = :get, &block)
+    middleware.call(make_env(method, &block))
+  end
+
+  def make_env(method = :get, &block)
+    connection.build_request(method, &block).to_env(connection)
+  end
+end
+
 RSpec.configure do |config|
+  config.include RequestMiddlewareExampleGroup, :type => :request_middleware
   config.treat_symbols_as_metadata_keys_with_true_values = true
 end
 
