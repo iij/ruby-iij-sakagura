@@ -31,7 +31,6 @@ end
 
 RSpec.configure do |config|
   config.include RequestMiddlewareExampleGroup, :type => :request_middleware
-  config.treat_symbols_as_metadata_keys_with_true_values = true
 end
 
 require 'vcr'
