@@ -19,7 +19,7 @@ describe IIJ::Sakagura::Core::Middleware::SignatureV2, type: :request_middleware
   let(:expire_after) { 3600 }
 
   before do
-    described_class.any_instance.stub(:current_time).and_return( Time.utc(2013, 10, 1) )
+    expect_any_instance_of(described_class).to receive(:current_time).and_return( Time.utc(2013, 10, 1) )
   end
 
   shared_examples_for "valid signature" do

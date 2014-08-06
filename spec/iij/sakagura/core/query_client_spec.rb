@@ -31,7 +31,7 @@ describe IIJ::Sakagura::Core::QueryClient do
   let(:signed_at) { Time.gm(2013, 10, 1) }
   let(:expire_after) { 3600 }
   before do
-    Time.stub(:now).and_return(signed_at)
+    expect(Time).to receive(:now).and_return(signed_at)
   end
 
   let(:client) do
