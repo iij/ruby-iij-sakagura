@@ -10,7 +10,7 @@ group :test do
   gem 'simplecov', :require => false
   gem 'simplecov-rcov', :require => false
   gem 'webmock'
-  gem 'vcr', '~> 2.8.0'
+  gem 'vcr', '~> 2.9.2'
 end
 
 gemspec
