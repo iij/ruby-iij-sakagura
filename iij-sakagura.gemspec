@@ -19,6 +19,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "json"
-  spec.add_dependency "faraday"
-  spec.add_dependency "faraday_middleware"
+  spec.add_dependency "faraday", [">= 0.8.0", "< 0.10"]
+  spec.add_dependency "faraday_middleware", [">= 0.9.0", "< 0.10"]
 end

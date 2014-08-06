@@ -49,7 +49,9 @@ module IIJ
           end
         end
 
-        Faraday.register_middleware :response, :iij_sakagura_raise_error => RaiseError
+        if Faraday::Response.respond_to? :register_middleware
+          Faraday::Response.register_middleware :iij_sakagura_raise_error => RaiseError
+        end
       end
     end
   end
