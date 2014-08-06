@@ -68,7 +68,10 @@ module IIJ
             params.sort_by{|k,v| k}.map{|k,v| escape(k.to_s) + "=" + escape(v.to_s) }.join('&')
           end
         end
-        Faraday.register_middleware :request, :signature_v2 => SignatureV2
+
+        if Faraday::Request.respond_to? :register_middleware
+          Faraday::Request.register_middleware :signature_v2 => SignatureV2
+        end
       end
     end
   end
